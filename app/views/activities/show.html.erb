@@ -1,0 +1,15 @@
+<h1> Run Path Details </h1>
+<div id="map_canvas" style="width:700px; height:400px">
+<ol>
+<% @run_detail["path"].each do |point| %>
+  <li>
+      <p>
+        <span>Longitude:</span> <span><%= point["longitude"] %></span>
+        <span>Latitude:</span> <span><%= point["latitude"] %></span>
+      </p>
+    </li>
+  <% end %>
+</ol> 
+
+
+

@@ -1,0 +1,21 @@
+<h1>Your profile </h1> <br>
+<%= image_tag @profile["normal_picture"] %>
+<br>
+<br>
+<p>Location: <%= @profile["location"] %></p>
+<p>Athlete Type: <%= @profile["athlete_type"] %></p>
+<%= link_to "Runkeeper Profile", @profile["profile"] %>
+</br>
+</br>
+</br>
+<ol>
+<% @feed["items"].each do |item| %>
+  <li>
+    <span><%= item["type"] %></span>
+    <span><%= item["total_distance"] %></span>
+    <span><%= item["duration"] %></span>
+    <span><%= item["start_time"] %></span>
+    <span><%= link_to "Run Detail", run_detail_path(item["uri"].split("/")[-1]) %></span>
+  </li>
+<% end %>
+

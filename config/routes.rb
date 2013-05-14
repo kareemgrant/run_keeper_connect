@@ -1,9 +1,14 @@
 Blog::Application.routes.draw do
-  resources :articles
   resources :users
+  resources :activities
 
-  root to: 'articles#index'
+  get '/runs', to: 'activities#index', as: 'runs'
+  get '/runs/:id', to: 'activities#show', as: 'run_detail'
+
+  root to: 'users#index'
+
   match 'auth/:provider/callback', to: 'sessions#create'
+
   match 'auth/failure', to: redirect('/')
   match 'signout', to: 'sessions#destroy', as: 'signout'
 end
