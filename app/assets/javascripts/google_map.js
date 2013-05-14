@@ -1,24 +1,20 @@
 $(function() {
-var data = gon.stuff;
-// Set the initial Lat and Long of the Google Map
-var length = data.length
-var myLatLng1 = new google.maps.LatLng(data[0].latitude, data[0].longitude);
-var myLatLng2 = new google.maps.LatLng(data[length - 1].latitude, data[length - 1].longitude);
+  var data = gon.stuff;
 
-// Google Map options
-var bounds = new google.maps.LatLngBounds();
-var myOptions = {
-    zoom: 13,
-    center: myLatLng1,
-    mapTypeId: google.maps.MapTypeId.ROADMAP
-  };
+  // Set the initial Lat and Long of the Google Map
+  var length = data.length
+  var startingPoint = new google.maps.LatLng(data[0].latitude, data[0].longitude);
+  var endingPoint = new google.maps.LatLng(data[length - 1].latitude, data[length - 1].longitude);
 
-
+  // Google Map options
+  var myOptions = {
+      zoom: 13,
+      center: startingPoint,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
 
   // Create the Google Map, set options
   var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
-
-
 
   var trackCoords = [];
 
@@ -35,13 +31,12 @@ var myOptions = {
     strokeWeight: 3
   });
 
-
-
   // Apply the line to the map
   trackPath.setMap(map);
 
+  // Set Starting and Ending markers
   var marker1 = new google.maps.Marker({
-      position: myLatLng1,
+      position: startingPoint, 
       map: map,
       title: 'Starting Location'
   });
@@ -49,10 +44,9 @@ var myOptions = {
   marker1.setIcon('http://maps.google.com/mapfiles/ms/icons/green-dot.png')
 
   var marker2 = new google.maps.Marker({
-      position: myLatLng2,
+      position: endingPoint,
       map: map,
       title: 'Ending Location'
   });
-
 
 });
