@@ -11,19 +11,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130515030910) do
+ActiveRecord::Schema.define(:version => 20130515182753) do
 
   create_table "activities", :force => true do |t|
     t.string   "activity_type"
     t.string   "provider"
-    t.integer  "duration"
-    t.integer  "distance"
+    t.float    "duration"
+    t.float    "distance"
     t.datetime "activity_date"
-    t.datetime "created_at",                       :null => false
-    t.datetime "updated_at",                       :null => false
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
     t.integer  "activity_id"
     t.integer  "user_id"
-    t.boolean  "run_detail",    :default => false
+    t.boolean  "detail_present", :default => false
+    t.text     "run_detail"
   end
 
   create_table "users", :force => true do |t|

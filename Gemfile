@@ -26,10 +26,11 @@ group :development, :test do
   gem 'factory_girl_rails', require: false
 end
 
-group :test, :development do 
+group :test do
   gem 'capybara'
   gem 'rspec-rails'
   gem 'vcr'
+  gem 'webmock'
 end
 
 

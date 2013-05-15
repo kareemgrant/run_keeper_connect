@@ -2,7 +2,7 @@ class Populator
   def self.add_activity_list(data, user)
 
     data["items"].each do |activity|
-      next if Activity.find_by_activity_id(self.get_activity_id(activity["uri"]))
+      next if find_activity(get_activity_id(activity["uri"]))
 
       Activity.create!(activity_type: activity["type"],
                        duration: activity["duration"],
@@ -19,9 +19,13 @@ class Populator
     uri.split("/")[-1]
   end
 
-  def self.add_activity_detail(data)
-    # store hash in hstore field
-    # set run_detail flag to true
-    binding.pry
+  def self.find_activity(id)
+    Activity.find_by_activity_id(id)
+  end
+
+  def self.add_activity_detail(data, activity_id)
+    activity = find_activity(activity_id)
+    activity.update_attributes(run_detail: data["path"], detail_present: true)
+    activity
   end
 end

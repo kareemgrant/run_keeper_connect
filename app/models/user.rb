@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
 
+  serialize :run_detail
   has_many :activities
 
   def self.from_omniauth(auth)
