@@ -20,6 +20,8 @@ class Populator
   end
 
   def self.add_activity_detail(data)
+    # store hash in hstore field
+    # set run_detail flag to true
     binding.pry
   end
 end

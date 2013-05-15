@@ -7,13 +7,15 @@ class ActivitiesController < ApplicationController
   end
 
   def show
+    @activity = Activity.find_by_activity_id(params[:id])
+    Activity.get_run_detail(current_user, params[:id]) unless @activity.run_detail
+
     # gon.stuff = @run_detail["path"]
     render :layout => 'map'
   end
 
   def fetch_runs
-    access_token = current_user.access_token
-    Client::API.get_runs(access_token, current_user)
+    Activity.get_runs(current_user)
     redirect_to activities_path
   end
 end

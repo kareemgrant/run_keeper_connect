@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130515021234) do
+ActiveRecord::Schema.define(:version => 20130515030910) do
 
   create_table "activities", :force => true do |t|
     t.string   "activity_type"
@@ -19,10 +19,11 @@ ActiveRecord::Schema.define(:version => 20130515021234) do
     t.integer  "duration"
     t.integer  "distance"
     t.datetime "activity_date"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
     t.integer  "activity_id"
     t.integer  "user_id"
+    t.boolean  "run_detail",    :default => false
   end
 
   create_table "users", :force => true do |t|
