@@ -20,13 +20,16 @@ end
 group :development, :test do 
   gem 'dotenv-rails'
   gem 'pry'
-  gem 'rspec-rails'
   gem 'unicorn'
   gem 'heroku'
-  gem 'pry'
   gem 'simplecov'
   gem 'factory_girl_rails', require: false
+end
+
+group :test, :development do 
   gem 'capybara'
+  gem 'rspec-rails'
+  gem 'vcr'
 end
 
 

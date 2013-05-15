@@ -4,6 +4,7 @@ Blog::Application.routes.draw do
 
   get '/runs', to: 'activities#index', as: 'runs'
   get '/runs/:id', to: 'activities#show', as: 'run_detail'
+  post '/fetch_runs', to: 'activities#fetch_runs', as: 'fetch_runs'
 
   root to: 'users#index'
 
