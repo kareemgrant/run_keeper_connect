@@ -31,13 +31,5 @@ class Populator
     @activities || Activity.where(user_id: user).pluck(:activity_id)
   end
 
-  def self.find_activity(id)
-    Activity.find_by_activity_id(id)
-  end
 
-  def self.add_activity_detail(data, activity_id)
-    activity = find_activity(activity_id)
-    activity.update_attributes(run_detail: data["path"], detail_present: true)
-    activity
-  end
 end

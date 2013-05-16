@@ -6,11 +6,6 @@ class Activity < ActiveRecord::Base
     Client::API.get_runs(token: user.access_token, user: user)
   end
 
-  def self.get_run_detail(user, activity_id)
-    Client::API.get_run_detail(token: user.access_token,
-                               id: activity_id)
-  end
-
 
 end
 
