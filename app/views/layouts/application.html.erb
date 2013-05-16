@@ -14,8 +14,7 @@
           Signed in as <%= current_user.name %> from <%= current_user.provider %>
           <%= link_to "Sign out", signout_path %>
         <% else current_user %>
-          <%= link_to "Sign in with Twitter", "/auth/twitter" %> 
-          <%= link_to "Sign in with Runkeeper", "/auth/runkeeper" %> 
+          <%= link_to "Authorize with Runkeeper", "/auth/runkeeper" %> 
         <% end %>
 
       </div>

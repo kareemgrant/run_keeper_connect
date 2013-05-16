@@ -11,7 +11,7 @@ module Client
     def get_run_detail(data)
       user = Runkeeper::User.new(data[:token])
       run_detail = user.fitness_activities(id: data[:id]).body.to_hash
-      Populator.add_activity_detail(run_detail, data[:id])
+      # Populator.add_activity_detail(run_detail, data[:id])
     end
   end
 end

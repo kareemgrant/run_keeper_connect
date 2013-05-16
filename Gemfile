@@ -10,6 +10,8 @@ gem 'faraday_middleware'
 gem 'gmaps4rails'
 gem 'omniauth-twitter'
 gem 'gon'
+gem 'resque', :require => 'resque/server'
+gem 'mono_logger'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -30,7 +32,6 @@ group :test do
   gem 'capybara'
   gem 'rspec-rails'
   gem 'vcr'
-  gem 'webmock'
 end
 
 

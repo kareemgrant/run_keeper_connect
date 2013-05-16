@@ -1,4 +1,8 @@
+require 'resque/server'
+
 Blog::Application.routes.draw do
+  mount Resque::Server, :at => "/resque"
+
   resources :users
   resources :activities
 

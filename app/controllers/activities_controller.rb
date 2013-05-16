@@ -10,13 +10,9 @@ class ActivitiesController < ApplicationController
 
   def show
     @activity = Activity.find_by_activity_id(params[:id])
-    Activity.get_run_detail(current_user, params[:id]) unless @activity.detail_present
-
-    if @activity.detail_present
-      path = YAML.load(@activity.run_detail)
-      gon.stuff = path
-      render :layout => 'map'
-    end
+    path = YAML.load(@activity.run_detail)["path"]
+    gon.stuff = path
+    render :layout => 'map'
   end
 
   def fetch_runs
