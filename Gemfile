@@ -24,14 +24,15 @@ group :development, :test do
   gem 'pry'
   gem 'unicorn'
   gem 'heroku'
-  gem 'simplecov'
   gem 'factory_girl_rails', require: false
+  gem 'simplecov', git: "git://github.com/colszowka/simplecov.git", require: false
 end
 
 group :test do
   gem 'capybara'
   gem 'rspec-rails'
   gem 'vcr'
+  gem 'webmock'
 end
 
 
