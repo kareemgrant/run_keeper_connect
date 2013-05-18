@@ -2,18 +2,43 @@ require 'spec_helper'
 
 describe SessionsController do
 
-  describe "#create" do
+  describe "POST #create" do
+
     it "saves user's access_token, provider and uid information" do
-
-      env["omniauth.auth"] = {
-        "provider" => "runkeeper",
-        "uid" => 5234295,
-        "credentials" => {"token" => "318092c9fa74468dba0507844d29cf4d", "expires"=>false}
-      }
-
+      user = double('user', id: 1)
+      User.stub(:from_omniauth).and_return(user)
       post :create
-      user = User.find_by_uid_and_provider(5234295, "runkeeper")
-      expect(user.access_token).to eq("318092c9fa74468dba0507844d29cf4d")
+      expect(response).to redirect_to root_url
+    end
+
+    it "sets session[:user_id] to user.id" do
+      user = double('user', id: 1)
+      User.stub(:from_omniauth).and_return(user)
+      post :create
+      expect(session[:user_id]).to eq user.id
+    end
+
+    it "renders :new template and does not save user with invalid info" do
+      User.stub(:from_omniauth).and_return(nil)
+      post :create
+      expect(flash[:alert]).to eq "Authentication failed"
+    end
+  end
+
+  describe "DELETE #destroy" do
+    before do
+      @user = double('user', id: 1)
+      session[:user_id] = @user.id
+    end
+
+    it "clears the session[:user_id] value" do
+      delete :destroy, id: @user
+      expect(session[:user_id]).to be_nil
+    end
+
+    it "redirects_to the root_url" do
+      delete :destroy, id: @user
+      expect(response).to redirect_to root_url
     end
   end
 end

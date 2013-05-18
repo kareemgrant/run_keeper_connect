@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to root_url, notice: "Signed in!"
     else
-      render :new, alert: "Authentication failed"
+      redirect_to root_url, alert: "Authentication failed"
     end
   end
 
