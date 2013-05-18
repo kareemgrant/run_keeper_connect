@@ -1,6 +1,5 @@
 class Populator
   def self.add_activity_list(data, user)
-
     user_activities = get_user_activities(user)
 
     data["items"].each do |activity|
@@ -8,7 +7,7 @@ class Populator
       next if user_activities.include?(activity_id)
       Resque.enqueue(FetchRunData, activity, user.id)
     end
-  end
+ end
 
 
   def self.get_activity_id(uri)
@@ -26,6 +25,8 @@ class Populator
                      detail_present: true,
                      user_id:  user)
   end
+
+  private
 
   def self.get_user_activities(user)
     @activities || Activity.where(user_id: user).pluck(:activity_id)

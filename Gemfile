@@ -26,6 +26,8 @@ group :development, :test do
   gem 'heroku'
   gem 'factory_girl_rails', require: false
   gem 'simplecov', git: "git://github.com/colszowka/simplecov.git", require: false
+  gem 'factory_girl_rails', require: false
+
 end
 
 group :test do
